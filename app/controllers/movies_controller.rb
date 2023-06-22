@@ -14,6 +14,13 @@ class MoviesController < ApplicationController
   private
 
   def render_not_found_response
-    render json: { error: "Movie not found" }, status: :not_found
+    render json: { error: "Movie not 
+      found" }, status: :not_found
+      
+  def summary
+        movie = Movie.find(params[:id])
+        render json: movie, serializer: MovieSummarySerializer
+  end
+
   end
 end
